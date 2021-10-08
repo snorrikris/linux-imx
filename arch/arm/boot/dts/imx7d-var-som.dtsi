@@ -1016,12 +1016,12 @@
 			>;
 		};
 
-		pinctrl_i2c_gpio: i2c-gpiogrp {
-				fsl,pins = <
-					MX7D_PAD_GPIO1_IO02__GPIO1_IO2 0x4000007f  /* SDA */
-					//MX7D_PAD_SAI1_RX_BCLK__GPIO6_IO17 0x4000007f  /* SCL */
-				>;
-		};
+		// pinctrl_i2c_gpio: i2c-gpiogrp {
+		// 		fsl,pins = <
+		// 			MX7D_PAD_GPIO1_IO02__GPIO1_IO2 0x4000007f  /* SDA */
+		// 			//MX7D_PAD_SAI1_RX_BCLK__GPIO6_IO17 0x4000007f  /* SCL */
+		// 		>;
+		// };
 
 		pinctrl_pwm2: pwm2grp {
 			fsl,pins = <
