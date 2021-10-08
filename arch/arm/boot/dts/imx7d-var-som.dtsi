@@ -576,25 +576,24 @@
 			>;
 		};
 
-		// Commented out following lines from V5.4
-		// pinctrl_enet1_sleep: enet1_sleep_grp {
-		// 	fsl,pins = <
-		// 		MX7D_PAD_SD2_CD_B__GPIO5_IO9			0x10
-		// 		MX7D_PAD_SD2_WP__GPIO5_IO10			0x10
-		// 		MX7D_PAD_ENET1_RGMII_TXC__GPIO7_IO11		0x10
-		// 		MX7D_PAD_ENET1_RGMII_TD0__GPIO7_IO6		0x10
-		// 		MX7D_PAD_ENET1_RGMII_TD1__GPIO7_IO7		0x10
-		// 		MX7D_PAD_ENET1_RGMII_TD2__GPIO7_IO8		0x10
-		// 		MX7D_PAD_ENET1_RGMII_TD3__GPIO7_IO9		0x10
-		// 		MX7D_PAD_ENET1_RGMII_TX_CTL__GPIO7_IO10		0x10
-		// 		MX7D_PAD_ENET1_RGMII_RXC__GPIO7_IO5		0x10
-		// 		MX7D_PAD_ENET1_RGMII_RD0__GPIO7_IO0		0x10
-		// 		MX7D_PAD_ENET1_RGMII_RD1__GPIO7_IO1		0x10
-		// 		MX7D_PAD_ENET1_RGMII_RD2__GPIO7_IO2		0x10
-		// 		MX7D_PAD_ENET1_RGMII_RD3__GPIO7_IO3		0x10
-		// 		MX7D_PAD_ENET1_RGMII_RX_CTL__GPIO7_IO4		0x10
-		// 	>;
-		// };
+		pinctrl_enet1_sleep: enet1_sleep_grp {
+			fsl,pins = <
+				MX7D_PAD_SD2_CD_B__GPIO5_IO9			0x10
+				MX7D_PAD_SD2_WP__GPIO5_IO10			0x10
+				MX7D_PAD_ENET1_RGMII_TXC__GPIO7_IO11		0x10
+				MX7D_PAD_ENET1_RGMII_TD0__GPIO7_IO6		0x10
+				MX7D_PAD_ENET1_RGMII_TD1__GPIO7_IO7		0x10
+				MX7D_PAD_ENET1_RGMII_TD2__GPIO7_IO8		0x10
+				MX7D_PAD_ENET1_RGMII_TD3__GPIO7_IO9		0x10
+				MX7D_PAD_ENET1_RGMII_TX_CTL__GPIO7_IO10		0x10
+				MX7D_PAD_ENET1_RGMII_RXC__GPIO7_IO5		0x10
+				MX7D_PAD_ENET1_RGMII_RD0__GPIO7_IO0		0x10
+				MX7D_PAD_ENET1_RGMII_RD1__GPIO7_IO1		0x10
+				MX7D_PAD_ENET1_RGMII_RD2__GPIO7_IO2		0x10
+				MX7D_PAD_ENET1_RGMII_RD3__GPIO7_IO3		0x10
+				MX7D_PAD_ENET1_RGMII_RX_CTL__GPIO7_IO4		0x10
+			>;
+		};
 
 		pinctrl_enet2: enet2grp {
 			fsl,pins = <
@@ -613,23 +612,22 @@
 			>;
 		};
 
-		// Commented out following lines from V5.4
-		// pinctrl_enet2_sleep: enet2_sleep_grp {
-		// 	fsl,pins = <
-		// 		MX7D_PAD_EPDC_GDSP__GPIO2_IO27			0x10
-		// 		MX7D_PAD_EPDC_SDCE2__GPIO2_IO22			0x10
-		// 		MX7D_PAD_EPDC_SDCE3__GPIO2_IO23			0x10
-		// 		MX7D_PAD_EPDC_GDCLK__GPIO2_IO24			0x10
-		// 		MX7D_PAD_EPDC_GDOE__GPIO2_IO25			0x10
-		// 		MX7D_PAD_EPDC_GDRL__GPIO2_IO26			0x10
-		// 		MX7D_PAD_EPDC_SDCE1__GPIO2_IO21			0x10
-		// 		MX7D_PAD_EPDC_SDCLK__GPIO2_IO16			0x10
-		// 		MX7D_PAD_EPDC_SDLE__GPIO2_IO17			0x10
-		// 		MX7D_PAD_EPDC_SDOE__GPIO2_IO18			0x10
-		// 		MX7D_PAD_EPDC_SDSHR__GPIO2_IO19			0x10
-		// 		MX7D_PAD_EPDC_SDCE0__GPIO2_IO20			0x10
-		// 	>;
-		// };
+		pinctrl_enet2_sleep: enet2_sleep_grp {
+			fsl,pins = <
+				MX7D_PAD_EPDC_GDSP__GPIO2_IO27			0x10
+				MX7D_PAD_EPDC_SDCE2__GPIO2_IO22			0x10
+				MX7D_PAD_EPDC_SDCE3__GPIO2_IO23			0x10
+				MX7D_PAD_EPDC_GDCLK__GPIO2_IO24			0x10
+				MX7D_PAD_EPDC_GDOE__GPIO2_IO25			0x10
+				MX7D_PAD_EPDC_GDRL__GPIO2_IO26			0x10
+				MX7D_PAD_EPDC_SDCE1__GPIO2_IO21			0x10
+				MX7D_PAD_EPDC_SDCLK__GPIO2_IO16			0x10
+				MX7D_PAD_EPDC_SDLE__GPIO2_IO17			0x10
+				MX7D_PAD_EPDC_SDOE__GPIO2_IO18			0x10
+				MX7D_PAD_EPDC_SDSHR__GPIO2_IO19			0x10
+				MX7D_PAD_EPDC_SDCE0__GPIO2_IO20			0x10
+			>;
+		};
 
 		// Commented out following lines from V5.4
 		// pinctrl_flexcan2: flexcan2grp {
@@ -785,13 +783,12 @@
 			>;
 		};
 
-		// Commented out following lines from V5.4
-		// pinctrl_uart1_sleep: uart1sleep_grp {
-		// 	fsl,pins = <
-		// 		MX7D_PAD_UART1_TX_DATA__GPIO4_IO1	0x10
-		// 		MX7D_PAD_UART1_RX_DATA__GPIO4_IO0	0x10
-		// 	>;
-		// };
+		pinctrl_uart1_sleep: uart1sleep_grp {
+			fsl,pins = <
+				MX7D_PAD_UART1_TX_DATA__GPIO4_IO1	0x10
+				MX7D_PAD_UART1_RX_DATA__GPIO4_IO0	0x10
+			>;
+		};
 
 		pinctrl_uart2: uart2grp {
 			fsl,pins = <
@@ -1017,6 +1014,13 @@
 			fsl,pins = <
 				MX7D_PAD_LPSR_GPIO1_IO05__GPIO1_IO5		0x14
 			>;
+		};
+
+		pinctrl_i2c_gpio: i2c-gpiogrp {
+				fsl,pins = <
+					MX7D_PAD_GPIO1_IO02__GPIO1_IO2 0x4000007f  /* SDA */
+					//MX7D_PAD_SAI1_RX_BCLK__GPIO6_IO17 0x4000007f  /* SCL */
+				>;
 		};
 
 		pinctrl_pwm2: pwm2grp {
