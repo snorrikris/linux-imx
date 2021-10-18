@@ -7,6 +7,7 @@
  * published by the Free Software Foundation.
  */
 #include <dt-bindings/input/input.h>
+#include <dt-bindings/leds/leds-pca9532.h>
 #include "imx7d.dtsi"
 
 / {
@@ -414,7 +415,7 @@
 	// pinctrl-1 = <&pinctrl_i2c4_gpio>;
 	// scl-gpios = <&gpio4 14 GPIO_ACTIVE_HIGH>;
 	// sda-gpios = <&gpio4 15 GPIO_ACTIVE_HIGH>;
-	status = "disabled";
+	status = "okay";
 
 	// ft5x06_ts@38 {
 	// 	compatible = "edt,edt-ft5x06";
@@ -426,6 +427,19 @@
 	// 	touchscreen-inverted-x;
 	// 	touchscreen-inverted-y;
 	// };
+
+	leds: pca9530@60 {
+		compatible = "nxp,pca9532";
+		reg = <0x60>;
+		red-power {
+			label = "pca:red:power";
+			type = <PCA9532_TYPE_LED>;
+		};
+		green-power {
+			label = "pca:green:power";
+			type = <PCA9532_TYPE_LED>;
+		};
+	};
 };
 
 &gpmi {
@@ -1198,3 +1212,4 @@
 // &snvs_poweroff {
 // 	status = "okay";
 // };
+
