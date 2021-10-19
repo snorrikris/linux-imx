@@ -457,7 +457,7 @@
 	// 	};
 	// };
 	leds: pca9530@60 {
-		compatible = "nxp,pca9532";
+		compatible = "nxp,pca9531";
 		reg = <0x60>;
 		red-power {
 			label = "pca:red:power";
