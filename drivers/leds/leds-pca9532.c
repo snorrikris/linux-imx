@@ -544,7 +544,7 @@ static int pca9532_probe(struct i2c_client *client,
 
 	data->chip_info = &pca9532_chip_info_tbl[devid];
 
-	dev_info(&client->dev, "setting platform data\n");
+	dev_info(&client->dev, "setting platform data Kvikna\n");
 	i2c_set_clientdata(client, data);
 	data->client = client;
 	mutex_init(&data->update_lock);
