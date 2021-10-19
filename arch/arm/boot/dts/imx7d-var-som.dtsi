@@ -432,15 +432,15 @@
 		compatible = "nxp,pca9531";
 		reg = <0x60>;
 		green-batt1 {
-			label = "pca:green:indicator-1";
+			label = "pca:green:indicator";
 			type = <PCA9532_TYPE_LED>;
 		};
 		green-batt2 {
-			label = "pca:green:indicator-2";
+			label = "pca:green:indicator";
 			type = <PCA9532_TYPE_LED>;
 		};
 		green-batt3 {
-			label = "pca:green:indicator-3";
+			label = "pca:green:indicator";
 			type = <PCA9532_TYPE_LED>;
 		};
 		red-power {
