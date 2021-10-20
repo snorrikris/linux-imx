@@ -351,6 +351,15 @@ static int pca9532_destroy_devices(struct pca9532_data *data, int n_devs)
 static int pca9532_configure(struct i2c_client *client,
 	struct pca9532_data *data, struct pca9532_platform_data *pdata)
 {
+	dev_info(&client->dev, "pca9532_configure - addr %d\n", client->addr);
+	i2c_smbus_write_byte_data(client, 0x01, 75);	// Set PCS0
+	i2c_smbus_write_byte_data(client, 0x02, 128);	// Set PWM0
+	i2c_smbus_write_byte_data(client, 0x03, 0);		// Set PCS1
+	i2c_smbus_write_byte_data(client, 0x04, 128);	// Set PWM1
+	i2c_smbus_write_byte_data(client, 0x05, 0x55);	// Set LS0
+	i2c_smbus_write_byte_data(client, 0x06, 0x55);	// Set LS1
+	goto exit;
+
 	int i, err = 0;
 	int gpios = 0;
 	u8 maxleds = data->chip_info->num_leds;
@@ -508,7 +517,6 @@ pca9532_of_populate_pdata(struct device *dev, struct device_node *np)
 static int pca9532_probe(struct i2c_client *client,
 	const struct i2c_device_id *id)
 {
-	dev_info(&client->dev, "probe called\n");
 	int devid;
 	const struct of_device_id *of_id;
 	struct pca9532_data *data = i2c_get_clientdata(client);

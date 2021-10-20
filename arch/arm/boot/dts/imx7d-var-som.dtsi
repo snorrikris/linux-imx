@@ -428,9 +428,9 @@
 	// 	touchscreen-inverted-y;
 	// };
 
-	// leds: pca9530@60 {
-	// 	compatible = "nxp,pca9531";
-	// 	reg = <0x60>;
+	leds: pca9530@60 {
+		compatible = "nxp,pca9531";
+		reg = <0x60>;
 	// 	green-batt1 {
 	// 		label = "pca:green:indicator_1";
 	// 		type = <PCA9532_TYPE_LED>;
@@ -447,15 +447,15 @@
 	// 		label = "pca:red:power";
 	// 		type = <PCA9532_TYPE_LED>;
 	// 	};
-	// 	green-power {
-	// 		label = "pca:green:power";
-	// 		type = <PCA9532_TYPE_LED>;
-	// 	};
+		green-power {
+			label = "pca:green:power";
+			type = <PCA9532_TYPE_LED>;
+		};
 	// 	blue-power {
 	// 		label = "pca:blue:power";
 	// 		type = <PCA9532_TYPE_LED>;
 	// 	};
-	// };
+	};
 	// leds: pca9530@60 {
 	// 	compatible = "nxp,pca9531";
 	// 	reg = <0x60>;
@@ -469,63 +469,63 @@
 	// 	};
 	// };
 
-	leds_fp: leds@60 {
-		compatible = "nxp,pca9531";
-		reg = <0x60>;
-		pwm = <0 0>;
-		psc = <0 0>;
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		@0{
-			reg = <0>;
-			label = "ur1";
-			type = <1>;
-			state = <0>;
-		};
-		@1{
-			reg = <1>;
-			label = "ur2";
-			type = <1>;
-			state = <0>;
-		};
-		@2{
-			reg = <2>;
-			label = "ug1";
-			type = <1>;
-			state = <0>;
-		};
-		@3{
-			reg = <3>;
-			label = "ug2";
-			type = <1>;
-			state = <0>;
-		};
-		@4{
-			reg = <4>;
-			label = "ub1";
-			type = <1>;
-			state = <0>;
-		};
-		@5{
-			reg = <5>;
-			label = "ub2";
-			type = <1>;
-			state = <0>;
-		};
-		@6{
-			reg = <6>;
-			label = "uw1";
-			type = <1>;
-			state = <0>;
-		};
-		@7{
-			reg = <7>;
-			label = "uw2";
-			type = <1>;
-			state = <0>;
-		};
-	};
+	// leds_fp: leds@60 {
+	// 	compatible = "nxp,pca9531";
+	// 	reg = <0x60>;
+	// 	pwm = <0 0>;
+	// 	psc = <0 0>;
+	// 	#address-cells = <1>;
+	// 	#size-cells = <0>;
+	// 
+	// 	@0{
+	// 		reg = <0>;
+	// 		label = "ur1";
+	// 		type = <1>;
+	// 		state = <0>;
+	// 	};
+	// 	@1{
+	// 		reg = <1>;
+	// 		label = "ur2";
+	// 		type = <1>;
+	// 		state = <0>;
+	// 	};
+	// 	@2{
+	// 		reg = <2>;
+	// 		label = "ug1";
+	// 		type = <1>;
+	// 		state = <0>;
+	// 	};
+	// 	@3{
+	// 		reg = <3>;
+	// 		label = "ug2";
+	// 		type = <1>;
+	// 		state = <0>;
+	// 	};
+	// 	@4{
+	// 		reg = <4>;
+	// 		label = "ub1";
+	// 		type = <1>;
+	// 		state = <0>;
+	// 	};
+	// 	@5{
+	// 		reg = <5>;
+	// 		label = "ub2";
+	// 		type = <1>;
+	// 		state = <0>;
+	// 	};
+	// 	@6{
+	// 		reg = <6>;
+	// 		label = "uw1";
+	// 		type = <1>;
+	// 		state = <0>;
+	// 	};
+	// 	@7{
+	// 		reg = <7>;
+	// 		label = "uw2";
+	// 		type = <1>;
+	// 		state = <0>;
+	// 	};
+	// };
 };
 
 &gpmi {
