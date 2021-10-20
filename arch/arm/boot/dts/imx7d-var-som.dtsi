@@ -431,18 +431,18 @@
 	leds: pca9530@60 {
 		compatible = "nxp,pca9531";
 		reg = <0x60>;
-		green-batt1 {
-			label = "pca:green:indicator";
-			type = <PCA9532_TYPE_LED>;
-		};
-		green-batt2 {
-			label = "pca:green:indicator";
-			type = <PCA9532_TYPE_LED>;
-		};
-		green-batt3 {
-			label = "pca:green:indicator";
-			type = <PCA9532_TYPE_LED>;
-		};
+	// 	green-batt1 {
+	// 		label = "pca:green:indicator_1";
+	// 		type = <PCA9532_TYPE_LED>;
+	// 	};
+	// 	green-batt2 {
+	// 		label = "pca:green:indicator";
+	// 		type = <PCA9532_TYPE_LED>;
+	// 	};
+	// 	green-batt3 {
+	// 		label = "pca:green:indicator";
+	// 		type = <PCA9532_TYPE_LED>;
+	// 	};
 		red-power {
 			label = "pca:red:power";
 			type = <PCA9532_TYPE_LED>;
@@ -451,10 +451,10 @@
 			label = "pca:green:power";
 			type = <PCA9532_TYPE_LED>;
 		};
-		blue-power {
-			label = "pca:blue:power";
-			type = <PCA9532_TYPE_LED>;
-		};
+	// 	blue-power {
+	// 		label = "pca:blue:power";
+	// 		type = <PCA9532_TYPE_LED>;
+	// 	};
 	};
 	// leds: pca9530@60 {
 	// 	compatible = "nxp,pca9531";

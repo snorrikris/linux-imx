@@ -154,6 +154,7 @@ static int pca9532_setpwm(struct i2c_client *client, int pwm)
 /* Set LED routing */
 static void pca9532_setled(struct pca9532_led *led)
 {
+	dev_info(&client->dev, "pca9532_setled\n");
 	struct i2c_client *client = led->client;
 	struct pca9532_data *data = i2c_get_clientdata(client);
 	u8 maxleds = data->chip_info->num_leds;
@@ -172,6 +173,7 @@ static void pca9532_setled(struct pca9532_led *led)
 static int pca9532_set_brightness(struct led_classdev *led_cdev,
 	enum led_brightness value)
 {
+	dev_info(&client->dev, "pca9532_set_brightness\n");
 	int err = 0;
 	struct pca9532_led *led = ldev_to_led(led_cdev);
 
@@ -194,6 +196,7 @@ static int pca9532_set_brightness(struct led_classdev *led_cdev,
 static int pca9532_set_blink(struct led_classdev *led_cdev,
 	unsigned long *delay_on, unsigned long *delay_off)
 {
+	dev_info(&client->dev, "pca9532_set_blink\n");
 	struct pca9532_led *led = ldev_to_led(led_cdev);
 	struct i2c_client *client = led->client;
 	int psc;
@@ -222,6 +225,7 @@ static int pca9532_set_blink(struct led_classdev *led_cdev,
 static int pca9532_event(struct input_dev *dev, unsigned int type,
 	unsigned int code, int value)
 {
+	dev_info(&client->dev, "pca9532_event\n");
 	struct pca9532_data *data = input_get_drvdata(dev);
 
 	if (!(type == EV_SND && (code == SND_BELL || code == SND_TONE)))
@@ -508,6 +512,7 @@ pca9532_of_populate_pdata(struct device *dev, struct device_node *np)
 static int pca9532_probe(struct i2c_client *client,
 	const struct i2c_device_id *id)
 {
+	dev_info(&client->dev, "probe called\n");
 	int devid;
 	const struct of_device_id *of_id;
 	struct pca9532_data *data = i2c_get_clientdata(client);
