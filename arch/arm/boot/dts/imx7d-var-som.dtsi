@@ -451,10 +451,10 @@
 			label = "pca:green:power";
 			type = <PCA9532_TYPE_LED>;
 		};
-	// 	blue-power {
-	// 		label = "pca:blue:power";
-	// 		type = <PCA9532_TYPE_LED>;
-	// 	};
+		blue-power {
+			label = "pca:blue:power";
+			type = <PCA9532_TYPE_LED>;
+		};
 	};
 	// leds: pca9530@60 {
 	// 	compatible = "nxp,pca9531";
