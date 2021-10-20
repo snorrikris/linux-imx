@@ -1299,7 +1299,7 @@
 // 	status = "okay";
 // };
 
-led-controller@60 {
+&leds {
 	compatible = "nxp,pca9531";
 	reg = <0x60>;
 	green-power {
