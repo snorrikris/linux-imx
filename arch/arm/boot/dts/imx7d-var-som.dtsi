@@ -43,6 +43,15 @@
 		>;
 		clock-frequency = <100000>;
 		status = "okay";
+
+		leds: pca9530@60 {
+			compatible = "nxp,pca9531";
+			reg = <0x60>;
+			green-power {
+				label = "pca:green:power";
+				type = <PCA9532_TYPE_LED>;
+			};
+		};
 	};
 
 	regulators {
@@ -1299,11 +1308,3 @@
 // 	status = "okay";
 // };
 
-&leds {
-	compatible = "nxp,pca9531";
-	reg = <0x60>;
-	green-power {
-		label = "pca:green:power";
-		type = <PCA9532_TYPE_LED>;
-	};
-};
