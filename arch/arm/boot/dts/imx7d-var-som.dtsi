@@ -1007,12 +1007,11 @@
 	status = "okay";
 };
 
-// Commented out following lines from V5.4
-// &pwm2 {
-// 	pinctrl-names = "default";
-// 	pinctrl-0 = <&pinctrl_pwm2>;
-// 	status = "okay";
-// };
+&pwm2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_pwm2>;
+	status = "okay";
+};
 
 &iomuxc_lpsr {
 	pinctrl-names = "default";
@@ -1036,7 +1035,7 @@
 
 		pinctrl_pwm2: pwm2grp {
 			fsl,pins = <
-				MX7D_PAD_LPSR_GPIO1_IO02__PWM2_OUT		0x110b0
+				MX7D_PAD_LPSR_GPIO1_IO02__PWM2_OUT		0x30
 			>;
 		};
 
