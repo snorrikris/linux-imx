@@ -53,7 +53,7 @@
 	// 			type = <PCA9532_TYPE_LED>;
 	// 		};
 	// 	};
-	};
+	// };
 
 	regulators {
 		compatible = "simple-bus";
