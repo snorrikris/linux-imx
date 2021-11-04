@@ -445,7 +445,7 @@
 
 &pwm3 {
 	pinctrl-names = "default";
-	pinctrl-1 = <&pinctrl_pwm3>;
+	pinctrl-0 = <&pinctrl_pwm3>;
 	status = "okay";
 };
 
