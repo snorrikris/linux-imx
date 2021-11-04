@@ -443,6 +443,12 @@
 	status = "disabled";
 };
 
+&pwm3 {
+	pinctrl-names = "default";
+	pinctrl-1 = <&pinctrl_pwm3>;
+	status = "okay";
+};
+
 &iomuxc {
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&pinctrl_hog_1>;
@@ -478,7 +484,7 @@
 				MX7D_PAD_I2C4_SDA__GPIO4_IO15           0x14  /* CHARGER_CE output */
 				MX7D_PAD_GPIO1_IO12__GPIO1_IO12         0x59  /* GAUGE_GPOUT input */
 				MX7D_PAD_GPIO1_IO11__GPIO1_IO11         0x14  /* CHARGER_QON output */
-				MX7D_PAD_GPIO1_IO10__GPIO1_IO10         0x14  /* LED_RST_n */
+				//MX7D_PAD_GPIO1_IO10__GPIO1_IO10         0x14  /* LED_RST_n */
 				MX7D_PAD_LCD_DATA22__GPIO3_IO27         0x59  /* V_EXT_VALID_n input*/
 				MX7D_PAD_EPDC_DATA01__GPIO2_IO1         0x14  /* FPGA_USB_RST_n output */
 				MX7D_PAD_EPDC_DATA04__GPIO2_IO4         0x14  /* ADC_PD_n output */
@@ -491,6 +497,12 @@
 				MX7D_PAD_LCD_DATA20__GPIO3_IO25         0x59  /* SRESET_n input */
 				MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30       0x59  /* DBG_IO_5 */
 				MX7D_PAD_EPDC_PWR_STAT__GPIO2_IO31      0x59  /* DBG_IO_6 */
+			>;
+		};
+
+		pinctrl_pwm3: pwm3grp {
+			fsl,pins = <
+				MX7D_PAD_GPIO1_IO10__PWM3_OUT           0x30  /* Trigger output */
 			>;
 		};
 
