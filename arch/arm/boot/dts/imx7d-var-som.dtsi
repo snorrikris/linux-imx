@@ -33,27 +33,27 @@
 		status = "okay";
 	};
 
-	// Control Module LEDs
-	// i2c_gpio: i2c-gpio {
-	// 	compatible = "i2c-gpio";
-	// 	pinctrl-names = "default";
-	// 	pinctrl-0 = <&pinctrl_i2c_gpio>;
-	// 	gpios = <
-	// 		   &gpio1 2 GPIO_ACTIVE_HIGH /* SDA */
-	// 		   &gpio6 17 GPIO_ACTIVE_HIGH /* SCL */
-	// 	>;
-	// 	clock-frequency = <100000>;
-	// 	status = "okay";
+	// Control Module LEDs - NOTE - currently used pin is in confight with PWM2 - will be changed in next HW gen.
+	i2c_gpio: i2c-gpio {
+		compatible = "i2c-gpio";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_i2c_gpio>;
+		gpios = <
+			   &gpio1 2 GPIO_ACTIVE_HIGH /* SDA */
+			   &gpio6 17 GPIO_ACTIVE_HIGH /* SCL */
+		>;
+		clock-frequency = <100000>;
+		status = "okay";
 
-	// 	leds: pca9530@60 { /* NOTE - the pca9532 device driver has been hard coded to turn on the power led when the probe function is called */
-	// 		compatible = "nxp,pca9531";
-	// 		reg = <0x60>;
-	// 		green-power {
-	// 			label = "pca:green:power";
-	// 			type = <PCA9532_TYPE_LED>;
-	// 		};
-	// 	};
-	// };
+		leds: pca9530@60 { /* NOTE - the pca9532 device driver has been hard coded to turn on the power led when the probe function is called */
+			compatible = "nxp,pca9531";
+			reg = <0x60>;
+			green-power {
+				label = "pca:green:power";
+				type = <PCA9532_TYPE_LED>;
+			};
+		};
+	};
 
 	regulators {
 		compatible = "simple-bus";
@@ -443,11 +443,12 @@
 	status = "disabled";
 };
 
-&pwm3 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_pwm3>;
-	status = "okay";
-};
+// PWM3 (is) will be used for Trigger output (when next HW gen. ready)
+//&pwm3 {
+//	pinctrl-names = "default";
+//	pinctrl-0 = <&pinctrl_pwm3>;
+//	status = "okay";
+//};
 
 &iomuxc {
 	pinctrl-names = "default", "sleep";
@@ -484,7 +485,8 @@
 				MX7D_PAD_I2C4_SDA__GPIO4_IO15           0x14  /* CHARGER_CE output */
 				MX7D_PAD_GPIO1_IO12__GPIO1_IO12         0x59  /* GAUGE_GPOUT input */
 				MX7D_PAD_GPIO1_IO11__GPIO1_IO11         0x14  /* CHARGER_QON output */
-				//MX7D_PAD_GPIO1_IO10__GPIO1_IO10         0x14  /* LED_RST_n */
+				// Note - MX7D_PAD_GPIO1_IO10 will be used for PWM3 in next HW gen.
+				MX7D_PAD_GPIO1_IO10__GPIO1_IO10         0x14  /* LED_RST_n */
 				MX7D_PAD_LCD_DATA22__GPIO3_IO27         0x59  /* V_EXT_VALID_n input*/
 				MX7D_PAD_EPDC_DATA01__GPIO2_IO1         0x14  /* FPGA_USB_RST_n output */
 				MX7D_PAD_EPDC_DATA04__GPIO2_IO4         0x14  /* ADC_PD_n output */
@@ -500,11 +502,12 @@
 			>;
 		};
 
-		pinctrl_pwm3: pwm3grp {
-			fsl,pins = <
-				MX7D_PAD_GPIO1_IO10__PWM3_OUT           0x30  /* Trigger output */
-			>;
-		};
+		// PWM3 (is) will be used for Trigger output (when next HW gen. ready)
+		// pinctrl_pwm3: pwm3grp {
+		// 	fsl,pins = <
+		// 		MX7D_PAD_GPIO1_IO10__PWM3_OUT           0x30  /* Trigger output */
+		// 	>;
+		// };
 
 		// Commented out following lines from V5.4
 		// pinctrl_hog_1_sleep: hoggrp-1sleep {
@@ -1020,11 +1023,12 @@
 	status = "okay";
 };
 
-&pwm2 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_pwm2>;
-	status = "okay";
-};
+// PWM2 (is) will be used for Photic output (when next HW gen. is ready)
+// &pwm2 {
+// 	pinctrl-names = "default";
+// 	pinctrl-0 = <&pinctrl_pwm2>;
+// 	status = "okay";
+// };
 
 &iomuxc_lpsr {
 	pinctrl-names = "default";
@@ -1038,18 +1042,20 @@
 			>;
 		};
 
-		// Control Module LEDs I2C SDA pin
-		// pinctrl_i2c_gpio: i2c-gpiogrp {
-		// 		fsl,pins = <
-		// 			MX7D_PAD_LPSR_GPIO1_IO02__GPIO1_IO2 0x4000007f  /* SDA */
-		// 			//MX7D_PAD_GPIO1_IO02__GPIO1_IO2 0x4000007f  /* SDA */
-		// 			//MX7D_PAD_SAI1_RX_BCLK__GPIO6_IO17 0x4000007f  /* SCL */
-		// 		>;
-		// };
+		// Control Module LEDs I2C SDA pin (NOTE currently using same pin as PWM2 - will be changed in next HW gen.)
+		pinctrl_i2c_gpio: i2c-gpiogrp {
+				fsl,pins = <
+					MX7D_PAD_LPSR_GPIO1_IO02__GPIO1_IO2 0x4000007f  /* SDA */
+					//MX7D_PAD_GPIO1_IO02__GPIO1_IO2 0x4000007f  /* SDA */
+					//MX7D_PAD_SAI1_RX_BCLK__GPIO6_IO17 0x4000007f  /* SCL */
+				>;
+		};
 
+		// PWM2 (is) will be used for Photic output (when next HW gen. is ready)
 		pinctrl_pwm2: pwm2grp {
 			fsl,pins = <
-				MX7D_PAD_LPSR_GPIO1_IO02__PWM2_OUT		0x30
+				MX7D_PAD_LPSR_GPIO1_IO02__PWM2_OUT		0x110b0
+				//MX7D_PAD_LPSR_GPIO1_IO02__PWM2_OUT		0x30
 			>;
 		};
 
