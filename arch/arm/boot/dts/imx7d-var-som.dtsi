@@ -33,27 +33,28 @@
 		status = "okay";
 	};
 
-	// Control Module LEDs - NOTE - currently used pin is in confight with PWM2 - will be changed in next HW gen.
-	i2c_gpio: i2c-gpio {
-		compatible = "i2c-gpio";
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_i2c_gpio>;
-		gpios = <
-			   &gpio1 2 GPIO_ACTIVE_HIGH /* SDA */
-			   &gpio6 17 GPIO_ACTIVE_HIGH /* SCL */
-		>;
-		clock-frequency = <100000>;
-		status = "okay";
-
-		leds: pca9530@60 { /* NOTE - the pca9532 device driver has been hard coded to turn on the power led when the probe function is called */
-			compatible = "nxp,pca9531";
-			reg = <0x60>;
-			green-power {
-				label = "pca:green:power";
-				type = <PCA9532_TYPE_LED>;
-			};
-		};
-	};
+	// OLD Control Module LEDs - NOTE - currently used pin is in confight with PWM2 - will be changed in next HW gen.
+	// Removed i2c-pgio - because it's not used in the new Control Module HW
+	//i2c_gpio: i2c-gpio {
+	//	compatible = "i2c-gpio";
+	//	pinctrl-names = "default";
+	//	pinctrl-0 = <&pinctrl_i2c_gpio>;
+	//	gpios = <
+	//		   &gpio1 2 GPIO_ACTIVE_HIGH /* SDA */
+	//		   &gpio6 17 GPIO_ACTIVE_HIGH /* SCL */
+	//	>;
+	//	clock-frequency = <100000>;
+	//	status = "okay";
+	//
+	//	leds: pca9530@60 { /* NOTE - the pca9532 device driver has been hard coded to turn on the power led when the probe function is called */
+	//		compatible = "nxp,pca9531";
+	//		reg = <0x60>;
+	//		green-power {
+	//			label = "pca:green:power";
+	//			type = <PCA9532_TYPE_LED>;
+	//		};
+	//	};
+	//};
 
 	regulators {
 		compatible = "simple-bus";
@@ -416,6 +417,24 @@
 	pinctrl-0 = <&pinctrl_i2c3>;
 	pinctrl-1 = <&pinctrl_i2c3_gpio>;
 	status = "okay";
+
+	// New Control Module LEDs chip controller is connected to I2C3 ("/dev/i2c-2" in linux)
+	leds: pca9530@60 { /* NOTE - the pca9532 device driver has been hard coded to turn on the power led when the probe function is called */
+		compatible = "nxp,pca9531";
+		reg = <0x60>;
+		green-power {
+			label = "pca:green:power";
+			type = <PCA9532_TYPE_LED>;
+		};
+	};
+
+	// New Control Module RTC chip - on I2C3
+	rtc: rv8263@51 {
+		compatible = "microcrystal,rv8263";
+		reg = <0x51>;
+		//quartz-load-femtofarads = <12500>;
+	};
+
 };
 
 &i2c4 {
