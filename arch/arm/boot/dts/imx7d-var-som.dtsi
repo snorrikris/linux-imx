@@ -166,7 +166,7 @@
 	cs-gpios = <&gpio6 22 0>;
 	status = "okay";
 
-	/* ADS8688 A/D-converter */
+	/* NOT USED - ADS8688 A/D-converter - Note - new Control Module is using FPGA to communicate with the ADC chip */
 	ads8688@0 {
 			compatible = "ti,ads8688";
 			reg = <0>;
@@ -603,14 +603,14 @@
 		};
 
 		/* OLD Control Module - 31438 ADC SPI interface - NOT USED */
-		//pinctrl_ecspi3: ecspi3grp {
-		//	fsl,pins = <
-		//		MX7D_PAD_SAI2_TX_SYNC__ECSPI3_MISO      0x2  /* ADC_SDO */
-		//		MX7D_PAD_SAI2_TX_BCLK__ECSPI3_MOSI      0x2  /* ADC_SDI */
-		//		MX7D_PAD_SAI2_RX_DATA__ECSPI3_SCLK      0x2  /* ADC_SCLK */
-		//		MX7D_PAD_SAI2_TX_DATA__GPIO6_IO22       0x2  /* ADC_CS_n */
-		//	>;
-		//};
+		pinctrl_ecspi3: ecspi3grp {
+			fsl,pins = <
+				MX7D_PAD_SAI2_TX_SYNC__ECSPI3_MISO      0x2  /* ADC_SDO */
+				MX7D_PAD_SAI2_TX_BCLK__ECSPI3_MOSI      0x2  /* ADC_SDI */
+				MX7D_PAD_SAI2_RX_DATA__ECSPI3_SCLK      0x2  /* ADC_SCLK */
+				MX7D_PAD_SAI2_TX_DATA__GPIO6_IO22       0x2  /* ADC_CS_n */
+			>;
+		};
 
 		pinctrl_enet1: enet1grp {
 			fsl,pins = <
