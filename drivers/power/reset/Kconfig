@@ -209,6 +209,14 @@ config POWER_RESET_SYSCON_POWEROFF
 	help
 	  Poweroff support for generic SYSCON mapped register poweroff.
 
+config KVIKNA_POWEROFF
+	bool "Kvikna EEG specific poweroff/reboot driver"
+	depends on OF
+	depends on HAS_IOMEM
+        select MFD_SYSCON
+	help
+	  Poweroff or reboot. Reboot if user turns on power switch again, during shutdown sequence.
+
 config POWER_RESET_RMOBILE
 	tristate "Renesas R-Mobile reset driver"
 	depends on ARCH_RMOBILE || COMPILE_TEST
