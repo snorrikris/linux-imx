@@ -55,6 +55,7 @@ static void syscon_poweroff(void)
 
 static int syscon_poweroff_probe(struct platform_device *pdev)
 {
+	dev_info(&pdev->dev, "syscon_poweroff_probe called");
 	char symname[KSYM_NAME_LEN];
 	int mask_err, value_err;
 
