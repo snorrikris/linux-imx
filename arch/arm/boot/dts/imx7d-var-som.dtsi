@@ -28,10 +28,10 @@
 		reg = <0x80000000 0x80000000>;
 	};
 
-	pxp_v4l2_out {
-		compatible = "fsl,imx7d-pxp-v4l2", "fsl,imx6sx-pxp-v4l2", "fsl,imx6sl-pxp-v4l2";
-		status = "okay";
-	};
+	// pxp_v4l2_out {
+	// 	compatible = "fsl,imx7d-pxp-v4l2", "fsl,imx6sx-pxp-v4l2", "fsl,imx6sl-pxp-v4l2";
+	// 	status = "okay";
+	// };
 
 	// OLD Control Module LEDs
 	// Note - Removed i2c-pgio - because it's not used in the new Control Module HW
@@ -825,11 +825,11 @@
 		// 	>;
 		// };
 
-		pinctrl_ads7846_pendown: ads7846pendowngrp {
-			fsl,pins = <
-				MX7D_PAD_GPIO1_IO09__GPIO1_IO9		0x59
-			>;
-		};
+		// pinctrl_ads7846_pendown: ads7846pendowngrp {
+		// 	fsl,pins = <
+		// 		MX7D_PAD_GPIO1_IO09__GPIO1_IO9		0x59
+		// 	>;
+		// };
 
 		pinctrl_uart1: uart1grp {
 			fsl,pins = <
