@@ -5,6 +5,8 @@
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
+ *
+ * See: https://www.variscite.com/blog/i-mx-device-tree-pinmux-settings/
  */
 #include <dt-bindings/input/input.h>
 #include <dt-bindings/leds/leds-pca9532.h>
@@ -517,7 +519,10 @@
 
 				// CPU pad => IOMUXC_SW_MUX_CTL_PAD_LCD_DATA23
 				MX7D_PAD_LCD_DATA23__GPIO3_IO28         0x14  /* SOM pin 26 - LED_RST output - (was V_USB_VALID_n input) */
+
+				// Need to set V_ISO_EN to low before boot (0x14 => 100K pull down, pull enabled, hysterisis disabled, slow slew rate, X1 drive strength)
 				MX7D_PAD_EPDC_DATA03__GPIO2_IO3         0x14  /* V_ISO_EN output */
+
 				MX7D_PAD_EPDC_DATA02__GPIO2_IO2         0x14  /* FPGA_USB_SUSPEND_n output */
 				MX7D_PAD_EPDC_DATA00__GPIO2_IO0         0x14  /* FPGA_RESET_n output */
 				MX7D_PAD_EPDC_DATA05__GPIO2_IO5         0x59  /* PB_IN input */
