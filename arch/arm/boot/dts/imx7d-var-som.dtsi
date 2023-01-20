@@ -532,7 +532,8 @@
 				MX7D_PAD_EPDC_PWR_STAT__GPIO2_IO31      0x59  /* DBG_IO_6 */
 
 				// CPU pad => IOMUXC_SW_MUX_CTL_PAD_EPDC_DATA14
-				MX7D_PAD_EPDC_DATA14__UART7_DCE_RTS     0x05  /* SOM pin 24 - CTR_ACT output (GPIO2_IO14) - (was UART7 RTS) */
+				// (0x14 => 100K pull down, pull enabled, hysterisis disabled, slow slew rate, X1 drive strength)
+				MX7D_PAD_EPDC_DATA14__GPIO2_IO14        0x14  /* SOM pin 24 - CTR_ACT output (GPIO2_IO14) - (was UART7 RTS) */
 			>;
 		};
 
