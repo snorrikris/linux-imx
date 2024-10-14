@@ -357,6 +357,18 @@ static int pca9532_configure(struct i2c_client *client,
 	int gpios = 0;
 	u8 maxleds = data->chip_info->num_leds;
 
+	dev_info(&client->dev, "pca9532_configure - addr %d\n", client->addr);
+	i2c_smbus_write_byte_data(client, 0x02, 75);	// Set PCS0 - Note - we will use the PSC0/PWM0 as the "blinker" at 2Hz 50% duty cycle.
+	i2c_smbus_write_byte_data(client, 0x03, 128);	// Set PWM0
+	i2c_smbus_write_byte_data(client, 0x04, 0);		// Set PCS1
+	i2c_smbus_write_byte_data(client, 0x05, 128);	// Set PWM1
+													// Bits0,1 = LED0 (00=off, 01=on, 10=PWM0, 11=PWM1) - bits2,3 = LED1, etc...
+	i2c_smbus_write_byte_data(client, 0x06, 0x00);	// Set LS0 (LED0...LED3)
+	i2c_smbus_write_byte_data(client, 0x07, 0x00);	// Set LS1 (LED4...LED7)
+	i2c_smbus_write_byte_data(client, 0x08, 0x00);	// Set LS0 (LED8...LED11)
+	i2c_smbus_write_byte_data(client, 0x09, 0xA8);	// Set LS1 (LED12..LED15)
+	goto exit;
+
 	for (i = 0; i < 2; i++)	{
 		data->pwm[i] = pdata->pwm[i];
 		data->psc[i] = pdata->psc[i];
