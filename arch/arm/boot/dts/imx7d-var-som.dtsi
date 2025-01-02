@@ -399,6 +399,74 @@
 };
 
 &iomuxc {
+	imx7d-sdb {
+		pinctrl_hog_1: hoggrp-1 {
+			fsl,pins = <
+				// Commented out following lines from V5.4
+				// MX7D_PAD_GPIO1_IO14__GPIO1_IO14		0x80000000  /* bt reg on */
+				// MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30	0x80000000  /* capacitive touch irq */
+				// MX7D_PAD_SD2_RESET_B__GPIO5_IO11	0x59  /* ethphy0 reset */
+				// MX7D_PAD_UART2_TX_DATA__GPIO4_IO3	0x59  /* ethphy1 reset */
+				// MX7D_PAD_GPIO1_IO10__GPIO1_IO10		0x59  /* hsic hub reset */
+				// MX7D_PAD_GPIO1_IO12__GPIO1_IO12		0x59  /* hsic hub connect */
+				// MX7D_PAD_GPIO1_IO13__GPIO1_IO13		0x59  /* LED */
+				// MX7D_PAD_SD1_WP__CCM_CLKO2		0xb0  /* camera clock */
+
+				MX7D_PAD_GPIO1_IO14__GPIO1_IO14     0x80000000  /* bt reg on */
+				MX7D_PAD_SD2_RESET_B__GPIO5_IO11    0x59  /* ethphy0 reset */
+				MX7D_PAD_UART2_TX_DATA__GPIO4_IO3	0x59  /* ethphy1 reset */
+				MX7D_PAD_GPIO1_IO12__GPIO1_IO12		0x59  /* GAUGE_GPOUT */
+				MX7D_PAD_SAI1_RX_BCLK__GPIO6_IO17 0x4000007f  /* SCL */
+				// MX7D_PAD_LPSR_GPIO1_IO05__GPIO1_IO5         0x59  /* CHARGER_PG input */
+				// MX7D_PAD_LPSR_GPIO1_IO07__GPIO1_IO7          0x59  /* CHARGER_STAT input */
+				/* 31438-2 I/O */
+				MX7D_PAD_LCD_DATA01__GPIO3_IO6          0x59  /* SOM pin 23 - NOT USED - (was V_POE_VALID_n input) */
+				MX7D_PAD_EPDC_DATA07__GPIO2_IO7         0x14  /* SOM pin 19 - NOT USED - (was TTL_OUT output GPIO) */
+				MX7D_PAD_EPDC_DATA06__GPIO2_IO6         0x59  /* SOM pin 21 - NOT USED - (was TTL_IN input) */
+				MX7D_PAD_EPDC_BDR0__GPIO2_IO28          0x14  /* SOM pin 73 - NOT USED - (was PHOTIC_TRIG output GPIO) */
+				MX7D_PAD_EPDC_BDR1__GPIO2_IO29          0x59  /* SOM pin 75 - NOT USED - (was PHOTIC_TRIGGED input) */
+				MX7D_PAD_SD1_WP__GPIO5_IO1              0x59  /* SOM pin 163 - NOT USED - (was CHARGER_IRQ input) */
+				MX7D_PAD_I2C4_SDA__GPIO4_IO15           0x14  /* CHARGER_CE output */
+				MX7D_PAD_GPIO1_IO12__GPIO1_IO12         0x59  /* GAUGE_GPOUT input */
+
+				// CPU pad => IOMUXC_SW_PAD_CTL_PAD_GPIO1_IO11 (0x59 == 47K pull up, hysteresis enabled, fast slew rate, DSE_1_X4 drive strength field)
+				MX7D_PAD_GPIO1_IO11__GPIO1_IO11         0x59  /* SOM pin 185 - ADAPTER_n input - (was CHARGER_QON output) */
+
+				// CPU pad => IOMUXC_SW_MUX_CTL_PAD_GPIO1_IO10 - Note - MX7D_PAD_GPIO1_IO10 is used for PWM3 on new Control Module.
+				//MX7D_PAD_GPIO1_IO10__GPIO1_IO10         0x14  /* SOM pin 181 - (was LED_RST_n) */
+
+				MX7D_PAD_LCD_DATA22__GPIO3_IO27         0x59  /* SOM pin 20 - NOT USED - (was V_EXT_VALID_n input) */
+				MX7D_PAD_EPDC_DATA01__GPIO2_IO1         0x14  /* FPGA_USB_RST_n output */
+				MX7D_PAD_EPDC_DATA04__GPIO2_IO4         0x14  /* SOM pin 6 - NOT USED - (was ADC_PD_n output) */
+
+				// CPU pad => IOMUXC_SW_MUX_CTL_PAD_LCD_DATA23
+				MX7D_PAD_LCD_DATA23__GPIO3_IO28         0x14  /* SOM pin 26 - LED_RST output - (was V_USB_VALID_n input) */
+
+				// Need to set V_ISO_EN to low before boot (0x14 => 100K pull down, pull enabled, hysterisis disabled, slow slew rate, X1 drive strength)
+				MX7D_PAD_EPDC_DATA03__GPIO2_IO3         0x14  /* V_ISO_EN output */
+
+				MX7D_PAD_EPDC_DATA02__GPIO2_IO2         0x14  /* FPGA_USB_SUSPEND_n output */
+				MX7D_PAD_EPDC_DATA00__GPIO2_IO0         0x14  /* FPGA_RESET_n output */
+				MX7D_PAD_EPDC_DATA05__GPIO2_IO5         0x59  /* PB_IN input */
+				MX7D_PAD_LCD_DATA21__GPIO3_IO26         0x59  /* BRACKET_n input */
+				MX7D_PAD_LCD_DATA20__GPIO3_IO25         0x59  /* SRESET_n input */
+				MX7D_PAD_EPDC_PWR_COM__GPIO2_IO30       0x59  /* DBG_IO_5 */
+				MX7D_PAD_EPDC_PWR_STAT__GPIO2_IO31      0x59  /* DBG_IO_6 */
+
+				// CPU pad => IOMUXC_SW_MUX_CTL_PAD_EPDC_DATA14
+				// (0x14 => 100K pull down, pull enabled, hysterisis disabled, slow slew rate, X1 drive strength)
+				MX7D_PAD_EPDC_DATA14__GPIO2_IO14        0x14  /* SOM pin 24 - CTR_ACT output (GPIO2_IO14) - (was UART7 RTS) */
+			>;
+		};
+
+		// PWM3 is used for Trigger output
+		pinctrl_pwm3: pwm3grp {
+			fsl,pins = <
+				MX7D_PAD_GPIO1_IO10__PWM3_OUT           0x30  /* Trigger output */
+			>;
+		};
+	};
+	
 	pinctrl_bt: btgrp {
 		fsl,pins = <
 			MX7D_PAD_GPIO1_IO14__GPIO1_IO14		0x80000000  /* bt reg on */
